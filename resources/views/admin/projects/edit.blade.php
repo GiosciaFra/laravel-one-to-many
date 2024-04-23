@@ -60,6 +60,19 @@
             @enderror
         </div>
 
+        <div>
+            <label for="type_id">Tipologia</label>
+            <select class=" form-select mt-2" name="type_id" id="type_id">
+                <option value=""></option>
+                @foreach ($types as $type)
+                    <option value="{{$type->id}}" {{ $type->id == old('type_id', $project->type ? $project->type->id : '') ? 'selected' : '' }}>
+                        {{$type->name}}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+
 
         <div class="d-flex gap-5 justify-content-center  ">
 

@@ -10,7 +10,7 @@
     
     <p><strong>Descrizione: </strong>{{$project->description}}</p>
     <p><strong>Tecnologie utilizzate: </strong>{{$project->used_technologies}}</p>
-    <p><strong>Tipo di progetto: </strong>{{$project->type->name}}</p>
+    <p><strong>Tipo di progetto: </strong>{{$project->type?->name}}</p>
 
     <div class="d-flex justify-content-center gap-5 pt-5">
 
