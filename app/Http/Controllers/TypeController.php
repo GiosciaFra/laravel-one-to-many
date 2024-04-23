@@ -22,7 +22,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.types.create');
     }
 
     /**
@@ -30,7 +30,13 @@ class TypeController extends Controller
      */
     public function store(StoreTypeRequest $request)
     {
-        //
+        $request->validated();
+        $newType = new Type();
+
+        $newType->fill($request->all());
+        $newType->save();
+
+        return redirect()->route('admin.types.index');
     }
 
     /**
@@ -47,15 +53,19 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        return view('admin.types.edit', compact('type'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTypeRequest $request, Type $type)
+    public function update(StoreTypeRequest $request, Type $type)
     {
-        //
+        $request->validated();
+        $type->update($request->all());
+        $type->save();
+
+        return redirect()->route('admin.types.show', $type->id);
     }
 
     /**
@@ -63,6 +73,7 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+        return redirect()->route('admin.types.index');
     }
 }
